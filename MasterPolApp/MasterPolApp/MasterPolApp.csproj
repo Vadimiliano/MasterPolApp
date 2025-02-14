@@ -134,14 +134,28 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddOrEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PartnerListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SellHistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AddOrEditPage.xaml.cs">
+      <DependentUpon>AddOrEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PartnerListPage.xaml.cs">
       <DependentUpon>PartnerListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SellHistoryPage.xaml.cs">
+      <DependentUpon>SellHistoryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

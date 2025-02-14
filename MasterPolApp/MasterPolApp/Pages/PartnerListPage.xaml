@@ -9,7 +9,11 @@
       Title="PartnerListPage">
 
     <Grid>
-        <ListView x:Name="PartnerListView">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListView x:Name="PartnerListView" Grid.Row="0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -19,13 +23,33 @@
                             <ColumnDefinition Width="300"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding PartnerType.TypeName, StringFormat={}Тип: {0}}"></TextBlock>
+                        <StackPanel Grid.Column="0" Margin="5">
+                            <TextBlock Text="{Binding PartnerType.TypeName, StringFormat={}{0}}"
+                                       FontWeight="Bold"> <TextBlock Text="{Binding PartnerName, StringFormat={} | {0}}"></TextBlock></TextBlock>
+                            <TextBlock Text="{Binding Directors.DirectorName, StringFormat={}Директор: {0}}"></TextBlock>
+                            <TextBlock Text="{Binding PartnerPhone, StringFormat={}{0}}"></TextBlock>
+                            <TextBlock Text="{Binding Rating, StringFormat={}Рейтинг: {0}}"></TextBlock>
+                        </StackPanel>
+
+                        <TextBlock Grid.Column="1" Text="%" VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"></TextBlock>
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
+                            <Button x:Name="EditButton"
+                                    Click="EditButton_Click"
+                                    Content="Редактировать"></Button>
+                            <Button x:Name="SaleHistoryButton"
+                                    Click="SaleHistoryButton_Click"
+                                    Content="История продаж"></Button>
                         </StackPanel>
                         
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <Button x:Name="AddButton" Click="AddButton_Click" Content="Добавить" Grid.Row="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Height="30"></Button>
     </Grid>
 </Page>

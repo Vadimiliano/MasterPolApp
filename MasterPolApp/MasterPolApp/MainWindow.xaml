@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterPolApp"
         mc:Ignorable="d"
-        Title="MasterPol" Height="600" Width="1000">
+        Title="MasterPol" Height="600" Width="1100"
+        MinHeight="600" MinWidth="1100"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
@@ -22,7 +24,7 @@
             <Image Source="/Res/Мастер пол.png"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
-                   Margin="320,5,0,5"></Image>
+                   Margin="370,5,0,5"></Image>
         </Grid>
 
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"

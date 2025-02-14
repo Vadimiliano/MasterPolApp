@@ -22,3 +22,4 @@ C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\obj\Debug\MasterPo
 C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\obj\Debug\MasterPolApp.csproj.CopyComplete
 C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\obj\Debug\MasterPolApp.exe
 C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\obj\Debug\MasterPolApp.pdb
+C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\obj\Debug\App.baml

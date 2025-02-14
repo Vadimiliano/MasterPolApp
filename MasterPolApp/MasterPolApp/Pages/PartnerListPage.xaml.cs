@@ -25,5 +25,20 @@ namespace MasterPolApp.Pages
             InitializeComponent();
             PartnerListView.ItemsSource = Data.MasterPolEntities.GetContext().Partners.ToList();
         }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaleHistoryButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
