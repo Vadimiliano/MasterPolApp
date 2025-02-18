@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\lisav\Desktop\MasterPolApp\MasterPolApp\MasterPolApp\App.xaml
-2723906759
+4-2090827049
 2-747231112
-23-247306223
+25-469152749
 181411199544
-MainWindow.xaml;Pages\PartnerListPage.xaml;
+MainWindow.xaml;Pages\AddOrEditPage.xaml;Pages\PartnerListPage.xaml;Pages\SellHistoryPage.xaml;
 
 False
 

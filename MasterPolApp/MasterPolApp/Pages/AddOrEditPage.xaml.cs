@@ -23,6 +23,17 @@ namespace MasterPolApp.Pages
         public AddOrEditPage()
         {
             InitializeComponent();
+            PartnerTypeComboBox.ItemsSource = Data.MasterPolEntities.GetContext().PartnerType.ToList();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.PartnerListPage());
         }
     }
 }

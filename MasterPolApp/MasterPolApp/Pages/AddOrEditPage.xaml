@@ -9,6 +9,59 @@
       Title="AddOrEditPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Grid Grid.Column="0" Grid.Row="0" Margin="100,113">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Content="Наименование:" Grid.Row="0"></Label>
+            <TextBox x:Name="PartnerNameTextBox" Grid.Row="1"></TextBox>
+            <Label Content="Тип партнера:" Grid.Row="2"></Label>
+            <ComboBox x:Name="PartnerTypeComboBox" Grid.Row="3" DisplayMemberPath="TypeName"></ComboBox>
+            <Label Content="Рейтинг:" Grid.Row="4"></Label>
+            <TextBox x:Name="RatingTextBox" Grid.Row="5"></TextBox>
+            <Label Content="Адрес:" Grid.Row="6"></Label>
+            <TextBox x:Name="AdressTextBox" Grid.Row="7"></TextBox>
+
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="0" Margin="100,116">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Content="ФИО Директора:" Grid.Row="0"></Label>
+            <TextBox x:Name="DirectorNameTextBox" Grid.Row="1"></TextBox>
+            <Label Content="Телефон:" Grid.Row="2"></Label>
+            <TextBox x:Name="PhoneNumberTextBox" Grid.Row="3"></TextBox>
+            <Label Content="Почта:" Grid.Row="4"></Label>
+            <TextBox x:Name="EmailTextBox" Grid.Row="5"></TextBox>
+            <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" Grid.Row="6"></Button>
+            <Button x:Name="GoBackButton" Content="Назад" Click="GoBackButton_Click" Grid.Row="7"></Button>
+        </Grid>
+
+
+
     </Grid>
 </Page>
