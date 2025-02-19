@@ -20,6 +20,7 @@ namespace MasterPolApp.Pages
     /// </summary>
     public partial class AddOrEditPage : Page
     {
+
         public AddOrEditPage()
         {
             InitializeComponent();
@@ -28,7 +29,56 @@ namespace MasterPolApp.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                StringBuilder error = new StringBuilder();
 
+                if (string.IsNullOrEmpty(PartnerNameTextBox.Text))
+                {
+                    error.AppendLine("Введите наименование партнера");
+                }
+
+                if (string.IsNullOrEmpty(PartnerTypeComboBox.Text))
+                {
+                    error.AppendLine("Выберите тип партнера");
+                }
+
+                if (string.IsNullOrEmpty(RatingTextBox.Text))
+                {
+                    error.AppendLine("Введите рейтинг");
+                }
+
+                if (string.IsNullOrEmpty(AdressIndexTextBox.Text))
+                {
+                    error.AppendLine("Введите адрес");
+                }
+
+                if (string.IsNullOrEmpty(DirectorNameTextBox.Text))
+                {
+                    error.AppendLine("Введите ФИО директора");
+                }
+
+                if (string.IsNullOrEmpty(PhoneNumberTextBox.Text))
+                {
+                    error.AppendLine("Введите номер телефона");
+                }
+
+                if (string.IsNullOrEmpty(EmailTextBox.Text))
+                {
+                    error.AppendLine("Введите почту");
+                }
+
+
+                if(error.Length > 0)
+                {
+                    MessageBox.Show(error.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
