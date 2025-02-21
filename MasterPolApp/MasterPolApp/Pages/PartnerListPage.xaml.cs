@@ -28,7 +28,7 @@ namespace MasterPolApp.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            Classes.Manager.MainFrame.Navigate(new Pages.AddOrEditPage());
+            Classes.Manager.MainFrame.Navigate(new Pages.AddOrEditPage((sender as Button).DataContext as Data.Partners));
 
         }
 
@@ -39,7 +39,7 @@ namespace MasterPolApp.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            Classes.Manager.MainFrame.Navigate(new Pages.AddOrEditPage());
+            Classes.Manager.MainFrame.Navigate(new Pages.AddOrEditPage(null));
         }
     }
 }
