@@ -39,9 +39,9 @@
             <ComboBox x:Name="PartnerTypeComboBox" Grid.Row="3" DisplayMemberPath="TypeName"></ComboBox>
             <Label Content="Рейтинг:" Grid.Row="4"></Label>
             <TextBox x:Name="RatingTextBox" Grid.Row="5"></TextBox>
-            <Label Content="Индекс::" Grid.Row="6"></Label>
+            <Label Content="Индекс:" Grid.Row="6"></Label>
             <TextBox x:Name="AdressIndexTextBox" Grid.Row="7"></TextBox>
-            <Label Content="Область::" Grid.Row="8"></Label>
+            <Label Content="Область:" Grid.Row="8"></Label>
             <TextBox x:Name="AdressAreaTextBox" Grid.Row="9"></TextBox>
 
             <Label Content="Город:" Grid.Row="10"></Label>

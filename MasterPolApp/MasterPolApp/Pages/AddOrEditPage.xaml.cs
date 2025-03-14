@@ -107,6 +107,15 @@ namespace MasterPolApp.Pages
                 {
                     error.AppendLine("Введите рейтинг");
                 }
+                else
+                {
+                    var countParse = Int32.TryParse(RatingTextBox.Text, out var result);
+                    if (!(countParse && result >= 0))
+                    {
+                        error.AppendLine("К-во - целое и положительное");
+                    }
+                }
+
 
                 if (string.IsNullOrEmpty(AdressIndexTextBox.Text))
                 {
@@ -128,6 +137,15 @@ namespace MasterPolApp.Pages
                 {
                     error.AppendLine("Введите номер дома");
                 }
+                else
+                {
+                    var countParse = Int32.TryParse(AdressHouseNumberTextBox.Text, out var result);
+                    if (!(countParse && result >= 0))
+                    {
+                        error.AppendLine("Номер дома - целое и положительное");
+                    }
+                }
+
 
                 if (string.IsNullOrEmpty(DirectorNameTextBox.Text))
                 {
@@ -151,107 +169,47 @@ namespace MasterPolApp.Pages
                     return;
                 }
 
-                var searcDirector = (from item in Data.MasterPolEntities.GetContext().Directors
-                                  where item.DirectorName == DirectorNameTextBox.Text
-                                  select item).FirstOrDefault();
 
-                if (searcDirector != null)
-                {
-                    CurrentProduct.ID = searcDirector.ID;
-                }
-                else
-                {
-                    Data.Directors DirectorName = new Data.Directors()
-                    {
-                        DirectorName = DirectorNameTextBox.Text
-                    };
-                    Data.MasterPolEntities.GetContext().Directors.Add(DirectorName);
-                    Data.MasterPolEntities.GetContext().SaveChanges();
-                    CurrentProduct.ID = DirectorName.ID;
-                }
 
-                
-                
-                var searchIndex = (from item in Data.MasterPolEntities.GetContext().Index
-                                    where item.IndexNumber == AdressIndexTextBox.Text
-                                    select item).FirstOrDefault();
-
-                if (searchIndex != null)
-                {
-                    CurrentProduct.ID = searchIndex.ID;
-                }
-                else
-                {
-                    Data.Index IndexNumber = new Data.Index()
-                    {
-                        IndexNumber = AdressIndexTextBox.Text
-                    };
-                    Data.MasterPolEntities.GetContext().Index.Add(IndexNumber);
-                    Data.MasterPolEntities.GetContext().SaveChanges();
-                    CurrentProduct.ID = IndexNumber.ID;
-                }
-
-                var searhCity = (from item in Data.MasterPolEntities.GetContext().City
-                                   where item.City1 == AdressCityTextBox.Text
-                                   select item).FirstOrDefault();
-
-                if (searhCity != null)
-                {
-                    CurrentProduct.ID = searhCity.ID;
-                }
-                else
-                {
-                    Data.City IndexNumber = new Data.City()
-                    {
-                        City1 = AdressCityTextBox.Text
-                    };
-                    Data.MasterPolEntities.GetContext().City.Add(IndexNumber);
-                    Data.MasterPolEntities.GetContext().SaveChanges();
-                    CurrentProduct.ID = IndexNumber.ID;
-                }
-
+                var address = new Data.Adress();
 
                 var searchStreet = (from item in Data.MasterPolEntities.GetContext().Street
-                                   where item.StreetName == AdressStreetTextBox.Text
-                                   select item).FirstOrDefault();
+                                    where item.StreetName == AdressStreetTextBox.Text
+                                    select item).FirstOrDefault();
 
                 if (searchStreet != null)
                 {
-                    CurrentProduct.ID = searchStreet.ID;
+                    address.StreetID = searchStreet.ID;
                 }
                 else
                 {
-                    Data.Street IndexNumber = new Data.Street()
+                    Data.Street nameStreet = new Data.Street()
                     {
                         StreetName = AdressStreetTextBox.Text
                     };
-                    Data.MasterPolEntities.GetContext().Street.Add(IndexNumber);
+                    Data.MasterPolEntities.GetContext().Street.Add(nameStreet);
                     Data.MasterPolEntities.GetContext().SaveChanges();
-                    CurrentProduct.ID = IndexNumber.ID;
+                    address.StreetID = nameStreet.ID;
                 }
 
-                //var searchHouse = (from item in Data.MasterPolEntities.GetContext().Adress
-                //                   where item.House.ToString() == AdressHouseNumberTextBox.Text
-                //                   select item).FirstOrDefault();
+                var searchCity = (from item in Data.MasterPolEntities.GetContext().City
+                                  where item.City1 == AdressCityTextBox.Text
+                                  select item).FirstOrDefault();
 
-                //if (searchHouse != null)
-                //{
-                //    CurrentProduct.ID = searchHouse.ID;
-                //}
-                //else
-                //{
-                //    Data.Adress IndexNumber = new Data.Adress()
-                //    {
-                //        House = AdressHouseNumberTextBox.Text;
-                //    };
-                //    Data.MasterPolEntities.GetContext().Index.Add(IndexNumber);
-                //    Data.MasterPolEntities.GetContext().SaveChanges();
-                //    CurrentProduct.ID = IndexNumber.ID;
-                //}
-
-
-
-
+                if (searchCity != null)
+                {
+                    address.CityID = searchCity.ID;
+                }
+                else
+                {
+                    Data.City nameCity = new Data.City()
+                    {
+                        City1 = AdressCityTextBox.Text
+                    };
+                    Data.MasterPolEntities.GetContext().City.Add(nameCity);
+                    Data.MasterPolEntities.GetContext().SaveChanges();
+                    address.CityID = nameCity.ID;
+                }
 
                 var searchArea = (from item in Data.MasterPolEntities.GetContext().Area
                                   where item.AreaName == AdressAreaTextBox.Text
@@ -259,34 +217,70 @@ namespace MasterPolApp.Pages
 
                 if (searchArea != null)
                 {
-                    CurrentProduct.ID = searchArea.ID;
+                    address.AreaID = searchArea.ID;
                 }
                 else
                 {
-                    Data.Area supplierName = new Data.Area()
+                    Data.Area nameArea = new Data.Area()
                     {
                         AreaName = AdressAreaTextBox.Text
                     };
-                    Data.MasterPolEntities.GetContext().Area.Add(supplierName);
+                    Data.MasterPolEntities.GetContext().Area.Add(nameArea);
                     Data.MasterPolEntities.GetContext().SaveChanges();
-                    CurrentProduct.ID = supplierName.ID;
+                    address.AreaID = nameArea.ID;
                 }
 
+                var searchIndex = (from item in Data.MasterPolEntities.GetContext().Index
+                                   where item.IndexNumber == AdressIndexTextBox.Text
+                                   select item).FirstOrDefault();
 
+                if (searchIndex != null)
+                {
+                    address.IndexID = searchIndex.ID;
+                }
+                else
+                {
+                    Data.Index numberIndex = new Data.Index()
+                    {
+                        IndexNumber = AdressIndexTextBox.Text
+                    };
+                    Data.MasterPolEntities.GetContext().Index.Add(numberIndex);
+                    Data.MasterPolEntities.GetContext().SaveChanges();
+                    address.IndexID = numberIndex.ID;
+                }
 
+                var searchName = (from item in Data.MasterPolEntities.GetContext().Directors
+                                  where item.DirectorName == DirectorNameTextBox.Text
+                                  select item).FirstOrDefault();
 
+                if (searchName != null)
+                {
+                    CurrentProduct.DirectorID = searchName.ID;
+                }
+                else
+                {
+                    Data.Directors directorName = new Data.Directors()
+                    {
+                        DirectorName = DirectorNameTextBox.Text
+                    };
+                    Data.MasterPolEntities.GetContext().Directors.Add(directorName);
+                    Data.MasterPolEntities.GetContext().SaveChanges();
+                    CurrentProduct.DirectorID = directorName.ID;
+                }
+                Data.MasterPolEntities.GetContext().Adress.Add(address);
+                Data.MasterPolEntities.GetContext().SaveChanges();
 
-
-
-                CurrentProduct.PartnerName = PartnerNameTextBox.Text;
-                CurrentProduct.Rating = Convert.ToInt32(RatingTextBox.Text);
+                CurrentProduct.PartnerEmail = EmailTextBox.Text;
                 CurrentProduct.PartnerPhone = PhoneNumberTextBox.Text;
+                CurrentProduct.Rating = Convert.ToInt32(RatingTextBox.Text);
                 var selectType = PartnerTypeComboBox.SelectedItem as Data.PartnerType;
                 CurrentProduct.PartnerTypeID = selectType.ID;
-
-
+                CurrentProduct.PartnerName = PartnerNameTextBox.Text;
+                address.House = Convert.ToInt32(AdressHouseNumberTextBox.Text);
+                CurrentProduct.AdressID = address.ID;
                 if (FlagAddOrEdit == "add")
                 {
+                    Data.MasterPolEntities.GetContext().Adress.Add(address);
                     Data.MasterPolEntities.GetContext().Partners.Add(CurrentProduct);
                     Data.MasterPolEntities.GetContext().SaveChanges();
                     MessageBox.Show("Успешно добавлено!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
