@@ -67,9 +67,9 @@
     <Property Name="DirectorID" Type="int" Nullable="false" />
     <Property Name="PartnerEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="PartnerPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="INN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="INN" Type="nvarchar" MaxLength="50" />
     <Property Name="Rating" Type="int" Nullable="false" />
-    <Property Name="AdressID" Type="int" Nullable="false" />
+    <Property Name="AdressID" Type="int" />
   </EntityType>
   <EntityType Name="PartnerType">
     <Key>
@@ -186,7 +186,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Partners_Adress">
-    <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+    <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
     <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Adress">

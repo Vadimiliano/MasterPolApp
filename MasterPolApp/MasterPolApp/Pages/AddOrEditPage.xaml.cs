@@ -68,7 +68,7 @@ namespace MasterPolApp.Pages
                 {
                     PartnerNameTextBox.Text = CurrentProduct.PartnerName;
                     PartnerTypeComboBox.SelectedItem = Data.MasterPolEntities.GetContext().PartnerType.
-                        Where(d => d.ID == CurrentProduct.ID).FirstOrDefault();
+                        Where(d => d.ID == CurrentProduct.PartnerTypeID).FirstOrDefault();
                     RatingTextBox.Text = CurrentProduct.Rating.ToString();
                     AdressIndexTextBox.Text = CurrentProduct.Adress.Index.IndexNumber.ToString();
                     AdressAreaTextBox.Text = CurrentProduct.Adress.Area.AreaName;
@@ -295,9 +295,13 @@ namespace MasterPolApp.Pages
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Создаем подробное сообщение об ошибке
+                string errorMessage = $"Произошла ошибка:\n\n{ex.Message}\n\nПодробности:\n{ex.ToString()}";
+
+                // Показываем сообщение в MessageBox
+                MessageBox.Show(errorMessage, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

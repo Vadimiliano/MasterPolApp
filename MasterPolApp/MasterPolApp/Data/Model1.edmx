@@ -72,9 +72,9 @@
           <Property Name="DirectorID" Type="int" Nullable="false" />
           <Property Name="PartnerEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PartnerPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="INN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="INN" Type="nvarchar" MaxLength="50" />
           <Property Name="Rating" Type="int" Nullable="false" />
-          <Property Name="AdressID" Type="int" Nullable="false" />
+          <Property Name="AdressID" Type="int" />
         </EntityType>
         <EntityType Name="PartnerType">
           <Key>
@@ -191,7 +191,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Partners_Adress">
-          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
           <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Adress">
@@ -376,9 +376,9 @@
           <Property Name="DirectorID" Type="Int32" Nullable="false" />
           <Property Name="PartnerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PartnerPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="INN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="INN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rating" Type="Int32" Nullable="false" />
-          <Property Name="AdressID" Type="Int32" Nullable="false" />
+          <Property Name="AdressID" Type="Int32" />
           <NavigationProperty Name="Adress" Relationship="Self.FK_Partners_Adress" FromRole="Partners" ToRole="Adress" />
           <NavigationProperty Name="Directors" Relationship="Self.FK_Partners_Directors" FromRole="Partners" ToRole="Directors" />
           <NavigationProperty Name="PartnerProducts" Relationship="Self.FK_PartnerProducts_Partners" FromRole="Partners" ToRole="PartnerProducts" />
@@ -480,7 +480,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Partners_Adress">
-          <End Role="Adress" Type="Self.Adress" Multiplicity="1" />
+          <End Role="Adress" Type="Self.Adress" Multiplicity="0..1" />
           <End Role="Partners" Type="Self.Partners" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Adress">

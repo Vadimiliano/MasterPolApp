@@ -20,9 +20,23 @@ namespace MasterPolApp.Pages
     /// </summary>
     public partial class SellHistoryPage : Page
     {
-        public SellHistoryPage()
+        public SellHistoryPage(int partnerId)
         {
             InitializeComponent();
+            LoadSalesHistory(partnerId);
+
+        }
+
+        private void LoadSalesHistory(int partnerId)
+        {
+            SalesDataGrid.ItemsSource = Data.MasterPolEntities.GetContext().PartnerProducts.
+                Where(s => s.PartnerID == partnerId).ToList();
+
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.PartnerListPage());
         }
     }
 }

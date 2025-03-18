@@ -34,7 +34,11 @@ namespace MasterPolApp.Pages
 
         private void SaleHistoryButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Button button = sender as Button;
+            if (button != null && button.Tag is int partnerId)
+            {
+                Classes.Manager.MainFrame.Navigate(new Pages.SellHistoryPage(partnerId));
+            }
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)

@@ -28,7 +28,7 @@ namespace MasterPolApp.Data
         public string PartnerPhone { get; set; }
         public string INN { get; set; }
         public int Rating { get; set; }
-        public int AdressID { get; set; }
+        public Nullable<int> AdressID { get; set; }
     
         public virtual Adress Adress { get; set; }
         public virtual Directors Directors { get; set; }
